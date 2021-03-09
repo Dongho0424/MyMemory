@@ -26,8 +26,10 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         let data = MemoData()
         data.contents = self.contents.text
         data.image = self.preview.image
-        data.regdate = Date()
+        let date = Date()
+        data.regdate = date
         data.title = self.subject
+        print(Date())
         
         // 3. 앱 델리게이트 객체 가져와서 저장
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -46,8 +48,30 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // delegate
         picker.delegate = self
         
+        // source type 정하기
+        let alert = UIAlertController(title: nil, message: "이미지를 가져올 곳을 선택해주세요", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "카메라", style: .default, handler: {
+                (_) in
+                picker.sourceType = .camera
+            // imagePickerController 실행
+            self.present(picker, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "저장앨범", style: .default, handler: {
+            (_) in
+            picker.sourceType = .savedPhotosAlbum
         // imagePickerController 실행
-        self.present(picker, animated: false)
+        self.present(picker, animated: true)
+    }))
+        alert.addAction(UIAlertAction(title: "사진 라이브러리", style: .default, handler: {
+            (_) in
+            picker.sourceType = .photoLibrary
+        // imagePickerController 실행
+        self.present(picker, animated: true)
+    }))
+
+        self.present(alert, animated: true)
+        
+        
     }
     
     override func viewDidLoad() {

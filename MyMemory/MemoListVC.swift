@@ -37,21 +37,21 @@ class MemoListVC: UITableViewController {
         let identifier = row.image == nil ? "memoCell" : "memoCellWithImage"
         
         // 3. reuse queue에서 알맞은거 꺼내고
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as! MemoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? MemoCell
         
         
         // 4. 셀 채우고
-        cell.subject?.text = row.title
-        cell.contents?.text = row.contents
-        cell.img?.image = row.image
+        cell?.subject?.text = row.title
+        cell?.contents?.text = row.contents
+        cell?.img?.image = row.image
         
         // 5. 날짜 포매팅
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        cell.regdate?.text = dateFormatter.string(from: row.regdate!)
+        cell?.regdate?.text = dateFormatter.string(from: row.regdate!)
         
         // 6. 리턴
-        return cell
+        return cell ?? MemoCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -66,7 +66,12 @@ class MemoListVC: UITableViewController {
         
         // 3. 값을 전달할 다음, 상세
         vc.param = row
+        
+        // 네비게이션 컨트롤러로 이동
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        // 매뉴얼 세그웨이로 이동
+//        self.performSegue(withIdentifier: "read_sg", sender: self)
         
     }
 }

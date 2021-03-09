@@ -25,13 +25,12 @@ class MemoReadVC: UIViewController {
         self.contents.text = param?.contents
         self.img.image = param?.image
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = dateFormatter.string(from: (param?.regdate)!)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd일 HH:mm분에 작성됨"
+//        let dateString = dateFormatter.string(from: (param?.regdate)!)
         
-        self.navigationItem.title = dateString
-        
+//        self.navigationItem.title = dateString
+
     }
-    
 
 }
