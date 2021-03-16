@@ -15,10 +15,22 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @IBAction func save(_ sender: Any) {
         
+        // 경고창 이미지
+        let alertV = UIViewController()
+        let iconImage = UIImage(named: "warning-icon-60")
+        let imageV = UIImageView(image: iconImage)
+        alertV.view.addSubview(imageV)
+        if let iconSize = iconImage?.size {
+            alertV.preferredContentSize = CGSize(width: iconSize.width, height: iconSize.height + 20) 
+        } else{
+            alertV.preferredContentSize = CGSize.zero
+        }
+        
         // 1. 내용 입력하지 않았을 경우, 경고한다.
         guard !self.contents.text.isEmpty else {
             let alert = UIAlertController(title: nil, message: "내용을 입력해주세요", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
+            alert.setValue(alertV, forKey: "contentViewController")
             self.present(alert, animated: true)
             return
         }
@@ -80,6 +92,19 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // Do any additional setup after loading the view.
         
         self.contents.delegate = self
+        
+        let bgImage = UIImage(named: "memo-background.png")!
+        self.view.backgroundColor = UIColor(patternImage: bgImage)
+        
+        // text view의 기본 속성
+        self.contents.layer.borderWidth = 0
+        self.contents.layer.borderColor = UIColor.clear.cgColor
+        self.contents.backgroundColor = UIColor.clear
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 9
+        self.contents.attributedText = NSAttributedString(string: " ", attributes: [.paragraphStyle: style])
+        self.contents.text = ""
     }
     
     // 사용자가 이미지를 선택하면 자동으로 호출되는 메소드
@@ -98,5 +123,13 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         self.subject = contents.substring(with: NSRange(location: 0, length: length))
         
         self.navigationItem.title = self.subject
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let bar = self.navigationController?.navigationBar
+        UIView.animate(withDuration: TimeInterval(0.3)){
+            bar?.alpha = (bar?.alpha == 0) ? 1 : 0
+        }
     }
 }
