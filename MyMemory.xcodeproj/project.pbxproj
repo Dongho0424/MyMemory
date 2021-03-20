@@ -28,6 +28,7 @@
 		2EEC997D2600726E00C04591 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EEC997C2600726E00C04591 /* SWRevealViewController.m */; };
 		2EEC99802600797400C04591 /* SideBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEC997F2600797400C04591 /* SideBarVC.swift */; };
 		2EEC99862600942600C04591 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEC99852600942600C04591 /* ProfileVC.swift */; };
+		2EEC99C32602F29300C04591 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEC99C22602F29300C04591 /* UserInfoManager.swift */; };
 		99EA409225F4629400557373 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EA409125F4629400557373 /* AppDelegate.swift */; };
 		99EA409425F4629400557373 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EA409325F4629400557373 /* SceneDelegate.swift */; };
 		99EA409925F4629400557373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99EA409725F4629400557373 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		2EEC997C2600726E00C04591 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2EEC997F2600797400C04591 /* SideBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarVC.swift; sourceTree = "<group>"; };
 		2EEC99852600942600C04591 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		2EEC99C22602F29300C04591 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		99EA408E25F4629400557373 /* MyMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99EA409125F4629400557373 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99EA409325F4629400557373 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		99EA409025F4629400557373 /* MyMemory */ = {
 			isa = PBXGroup;
 			children = (
+				2EEC99C22602F29300C04591 /* UserInfoManager.swift */,
 				2EEC997B2600726E00C04591 /* SWRevealViewController.h */,
 				2EEC997C2600726E00C04591 /* SWRevealViewController.m */,
 				2E756A9225F61E6D00422F34 /* MemoReadVC.swift */,
@@ -236,6 +239,7 @@
 				2EC8BF9625F61FBD007D0621 /* MemoCell.swift in Sources */,
 				2EEC997D2600726E00C04591 /* SWRevealViewController.m in Sources */,
 				2EC8BF9E25F647AD007D0621 /* MemoListVC.swift in Sources */,
+				2EEC99C32602F29300C04591 /* UserInfoManager.swift in Sources */,
 				99EA409425F4629400557373 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

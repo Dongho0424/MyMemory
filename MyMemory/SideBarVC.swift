@@ -23,6 +23,8 @@ class SideBarVC: UITableViewController {
     let nameLabel = UILabel()
     let emailLabel = UILabel()
     let profileImage = UIImageView()
+    
+    let uinfo = UserInfoManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,21 +36,17 @@ class SideBarVC: UITableViewController {
         self.tableView.tableHeaderView = headerView
         
         self.nameLabel.frame = CGRect(x: 70, y: 15, width: 100, height: 30)
-        self.nameLabel.text = "Dongho Choi"
         self.nameLabel.textColor = .white
         self.nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         self.nameLabel.backgroundColor = .clear
         headerView.addSubview(self.nameLabel)
         
         self.emailLabel.frame = CGRect(x: 70, y: 30, width: 130, height: 30)
-        self.emailLabel.text = "pridesam@snu.ac.kr"
         self.emailLabel.textColor = .white
         self.emailLabel.font = UIFont.systemFont(ofSize: 11)
         self.emailLabel.backgroundColor = .clear
         headerView.addSubview(self.emailLabel)
         
-        let defaultImage = UIImage(named: "account@2x.jpg")
-        self.profileImage.image = defaultImage
         self.profileImage.frame = CGRect(x: 10, y: 10, width: 50, height: 50)
         headerView.addSubview(self.profileImage)
         
@@ -56,6 +54,12 @@ class SideBarVC: UITableViewController {
         // 모든 뷰는 layer을 가짐
         self.profileImage.layer.cornerRadius = (self.profileImage.layer.frame.width / 2)
         self.profileImage.layer.masksToBounds = true // clipping mask 효과
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.nameLabel.text = self.uinfo.name ?? "Guest"
+        self.emailLabel.text = self.uinfo.account ?? ""
+        self.profileImage.image = self.uinfo.profile
     }
 
     // MARK: - Table view data source
@@ -88,6 +92,12 @@ class SideBarVC: UITableViewController {
             frontVC.pushViewController(memoFormVC!, animated: false)
             
             self.revealViewController()?.revealToggle(self)
+        } else if indexPath.row == 5 {
+            let _profileVC = self.storyboard?.instantiateViewController(identifier: "_Profile")
+            _profileVC?.modalPresentationStyle = .fullScreen
+            self.present(_profileVC!, animated: true) {
+                self.revealViewController()?.revealToggle(self)
+            }
         }
     }
 
