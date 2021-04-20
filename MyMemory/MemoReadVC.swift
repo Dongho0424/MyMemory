@@ -30,8 +30,5 @@ class MemoReadVC: UIViewController {
         let dateString = dateFormatter.string(from: (param?.regdate)!)
         
         self.navigationItem.title = dateString
-            
-        
     }
-
 }

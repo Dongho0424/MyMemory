@@ -5,7 +5,7 @@
 //  Created by 최동호 on 2021/03/08.
 //
 
-import Foundation
+import CoreData
 import UIKit
 
 class MemoData {
@@ -14,4 +14,6 @@ class MemoData {
     var contents : String?
     var image : UIImage?
     var regdate : Date?
+    
+    var objectId: NSManagedObjectID?
 }
